@@ -1,6 +1,7 @@
 #include<iostream>
 #include<string>
 #include<sstream>
+#include "./CommandEngine/CommandEngine.h"
 
 void decode(const std::string& input, std::string* com, std::string* args){
     std::stringstream ss {input};
@@ -13,6 +14,28 @@ void decode(const std::string& input, std::string* com, std::string* args){
 
 int main(){
     system("clear");
+    lvc::CommandEngine commandEngine;
+
+    commandEngine.insertCommand("echo", [](const std::string& params){
+        std::cout<<'\t'<<params<<'\n';
+    });
+
+    commandEngine.insertCommand("clear", [](const std::string& params){
+        system("clear");
+    });
+
+    commandEngine.insertCommand("exit", [](const std::string& params){
+        system("clear");
+        exit(0);
+    });
+
+    commandEngine.insertCommand("add", [](const std::string& params){
+        std::stringstream ss{params};
+        int a, b;
+        ss>>a>>b;
+        std::cout<<"\tLa suma es "<<a+b<<'\n';
+    });
+
     std::string input;
     std::string com;
     std::string args;
@@ -23,17 +46,7 @@ int main(){
         std::cout<<"> ";
         getline(std::cin, input);
         decode(input, &com, &args);
-        if(com.compare("echo") == 0){
-            std::cout<<'\t'<<args<<'\n';
-        }else if(com.compare("exit") == 0){
-            exit = true;
-        }else if(com.compare("") == 0){
-
-        }else if(com.compare("clear") == 0){
-            system("clear");
-        }else{
-            std::cout<<"\tCommand "<<com<<" not found. Use --help\n";
-        }
+        commandEngine.processCommand(com, args);
     }
     system("clear");
     return 0;

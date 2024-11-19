@@ -10,7 +10,7 @@ OUTPUT_FOLDER = ./out
 
 OBJS_FOLDER = ./objs
 
-OBJS = $(OBJS_FOLDER)/main.o
+OBJS = $(OBJS_FOLDER)/main.o $(OBJS_FOLDER)/CommandEngine/CommandEngine.o
 
 TESTS_FOLDER = $(SOURCE_FOLDER)/test
 
@@ -25,6 +25,9 @@ testTree:
 	$(CXX) $(CXXFLAGS) $(TESTS_FOLDER)/Tree/BSTreeTest.cpp -o $(OUTPUT_FOLDER)/testTree
 	$(OUTPUT_FOLDER)/testTree
 
+testMap:
+	$(CXX) $(CXXFLAGS) $(TESTS_FOLDER)/Map/TreeMap.cpp -o $(OUTPUT_FOLDER)/testMap
+	$(OUTPUT_FOLDER)/testMap
 
 $(OBJS_FOLDER)/%.o: $(SOURCE_FOLDER)/%.cpp
 	@mkdir -p $(@D)
