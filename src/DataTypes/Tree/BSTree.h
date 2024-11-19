@@ -9,8 +9,7 @@ namespace lvc{
             E data;
             Node<E>* right;
             Node<E>* left;
-            Node(E data){
-                this->data = data;
+            Node(const E& data):data{data}{
                 this->right = nullptr;
                 this->left = nullptr;
             }
@@ -143,8 +142,6 @@ namespace lvc{
         while(*pos != nullptr && !found){
 
             if( (*pos)->data == element ){
-
-                (*pos)->data = element;
                 found = true;
 
             }else if( (*pos)->data < element){
@@ -169,8 +166,7 @@ namespace lvc{
         while(*pos != nullptr && !found){
 
             if( (*pos)->data == element ){
-
-                (*pos)->data = element;
+                
                 found = true;
 
             }else if( (*pos)->data < element){
