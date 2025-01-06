@@ -39,7 +39,9 @@ namespace lvc{
 
 
         //remove methods
-            virtual void remove(int);
+            void remove(int);
+
+            virtual void remove(T);
 
 
         //read methods
@@ -164,6 +166,24 @@ namespace lvc{
     }   
 
     template<class T>
+    void ArrayList<T>::remove(T obj){
+
+        
+        bool found = false;
+        int i;
+        for( i = 0; i < this->m_Size && !found; i++ ){
+        
+            found =  ( *( this->m_Data + i) == obj );
+        
+        }
+
+        if(found){
+            this->remove(i-1);
+        }
+
+    }  
+
+    template<class T>
     T& ArrayList<T>::get(int pos){
 
         if( pos < 0 || pos > this->m_Size){
@@ -228,7 +248,7 @@ namespace lvc{
         
         for( int i = 0; i < this->m_Size && !found; i++ ){
         
-            found = element == *( this->m_Data + i);
+            found =  ( *( this->m_Data + i) == element );
         
         }
 
