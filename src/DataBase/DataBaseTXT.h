@@ -12,6 +12,8 @@ namespace lvc
 
             DataBaseTXT(const std::string&);
 
+            DataBaseTXT(const DataBaseTXT&);
+
             void connect();
 
             void selectProgramas(List<Programa>*);
@@ -31,6 +33,10 @@ namespace lvc
     };
 
     DataBaseTXT::DataBaseTXT(const std::string& r): root{r}{
+
+    }
+
+    DataBaseTXT::DataBaseTXT(const DataBaseTXT& r): root{r.root}{
 
     }
 
