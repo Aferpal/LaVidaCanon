@@ -1,6 +1,6 @@
 #pragma once
 #include "../CommandEngine/CommandEngine.h"
-#include "../DataBase/DataBaseTXT.h"
+#include "../DataBase/DataBaseConnection.h"
 #include <iostream>
 #include <iomanip>
 
@@ -29,6 +29,7 @@ namespace lvc
 
     App::App(DataBaseConnection* _db){
         this->db = _db;
+        this->db->connect();
         this->_exit = false;
         initializeCommands();
         clear("");
