@@ -22,7 +22,7 @@ namespace lvc
 
             void updatePrograma(const Programa&);
 
-            void deletePrograma(const Programa&);
+            bool deletePrograma(const Programa&);
 
             ~DataBaseTXT(){
                 if(this->f.is_open()){
@@ -101,11 +101,11 @@ namespace lvc
         w.close();
     };
 
-    void DataBaseTXT::deletePrograma(const Programa& p){
+    bool DataBaseTXT::deletePrograma(const Programa& p){
         List<Programa>* list = new ArrayList<Programa>;
         this->selectProgramas(list);
         if( !list->contains(p) ){
-            return;
+            return false;
         }
         list->remove(p);
         std::ofstream w{this->root+"/programas.txt"};
@@ -116,6 +116,7 @@ namespace lvc
         }
         delete list;
         w.close();
+        return true;
     };
 } // namespace lvc
 

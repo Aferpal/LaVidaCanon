@@ -32,7 +32,7 @@ namespace lvc
 
             void updatePrograma(const Programa&) override;
 
-            void deletePrograma(const Programa&) override;
+            bool deletePrograma(const Programa&) override;
 
             ~DataBaseMysql();
     };

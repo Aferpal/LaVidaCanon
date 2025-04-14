@@ -57,6 +57,17 @@ namespace lvc
             delete list;
         });
 
+        this->cmEngine.insertCommand("drop", [this](const std::string& params){
+            std::stringstream ss{params};
+            std::string name;
+            ss >> name;
+            if(this->db->deletePrograma(Programa{name, ""})){
+                std::cout<<'\t'<<name<<" correctly removed from DataBase\n\n";
+            }else{
+                std::cout<<"\tError trying to remove "<<name<<". Remember that it is case sensitive. \n\n";
+            }
+        });
+
         this->cmEngine.insertCommand("exit", [this](const std::string& params){
             clear("");
             safeExit();

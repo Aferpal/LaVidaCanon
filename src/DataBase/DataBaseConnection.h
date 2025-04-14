@@ -21,7 +21,7 @@ namespace lvc{
 
             virtual void updatePrograma(const Programa&) = 0;
 
-            virtual void deletePrograma(const Programa&) = 0;
+            virtual bool deletePrograma(const Programa&) = 0;
 
 
     };

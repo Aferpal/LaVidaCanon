@@ -2,3 +2,4 @@ out/
 objs/
 .vscode/
 db/
+src/main.cpp

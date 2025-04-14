@@ -43,7 +43,7 @@ $(OBJS_FOLDER)/DataBase/DataBaseMysql.o : $(SOURCE_FOLDER)/DataBase/DataBaseMysq
 
 $(OBJS_FOLDER)/%.o: $(SOURCE_FOLDER)/%.cpp
 	@mkdir -p $(@D)
-	@$(CXX) -c $< -o $@
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 
 

@@ -30,16 +30,27 @@ void DataBaseMysql::selectProgramas(List<Programa>* res){
     }
 }
 
-void DataBaseMysql::insertPrograma(const Programa& p){
+/*void DataBaseMysql::selectProgramaById(int id){
+    Table programa = this->db->getTable("PROGRAMA", true);
+    res->clear();
+    std::vector<Row> rows = programa.select().where("id = "+id).execute().fetchAll();
+    for(Row& r : rows){
+        res->append(Programa(r.get(0).get<std::string>(), r.get(1).get<std::string>()));
+    }
+}*/
 
+void DataBaseMysql::insertPrograma(const Programa& p){
+    
 }
 
 void DataBaseMysql::updatePrograma(const Programa& p){
 
 }
 
-void DataBaseMysql::deletePrograma(const Programa& p){
-
+bool DataBaseMysql::deletePrograma(const Programa& p){
+    Table programa = this->db->getTable("PROGRAMA", true);
+    int affectedRows = programa.remove().where("nombre='"+p.getNombre()+"'").execute().getAffectedItemsCount();
+    return affectedRows == 1;
 }
 
 DataBaseMysql::~DataBaseMysql(){
