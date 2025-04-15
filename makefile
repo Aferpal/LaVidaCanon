@@ -16,7 +16,7 @@ OUTPUT_FOLDER = ./out
 
 OBJS_FOLDER = ./objs
 
-OBJS = $(OBJS_FOLDER)/main.o $(OBJS_FOLDER)/CommandEngine/CommandEngine.o $(OBJS_FOLDER)/DataBase/DataBaseMysql.o
+OBJS = $(OBJS_FOLDER)/main.o $(OBJS_FOLDER)/CommandEngine/CommandEngine.o $(OBJS_FOLDER)/DataBase/DataBaseMysql.o $(OBJS_FOLDER)/DataTypes/List/ListUtils.o
 
 TESTS_FOLDER = $(SOURCE_FOLDER)/test
 
