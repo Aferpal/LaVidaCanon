@@ -39,18 +39,29 @@ void DataBaseMysql::selectProgramas(List<Programa>* res){
     }
 }*/
 
-void DataBaseMysql::insertPrograma(const Programa& p){
-    
+bool DataBaseMysql::insertPrograma(const Programa& p){
+    Table programa = this->db->getTable("PROGRAMA", true);
+    Row insertionRow;
+    insertionRow.set(0, p.getNombre());
+    insertionRow.set(1, p.getDirectorio());
+    insertionRow.set(2, Value());
+    insertionRow.set(3, Value());
+    return programa.insert().values(insertionRow).execute().getAffectedItemsCount() == 1;
 }
 
-void DataBaseMysql::updatePrograma(const Programa& p){
-
+bool DataBaseMysql::updatePrograma(const Programa& p){
+    Table programa = this->db->getTable("PROGRAMA", true);
+    Row insertionRow;
+    insertionRow.set(0, p.getNombre());
+    insertionRow.set(1, p.getDirectorio());
+    insertionRow.set(2, Value());
+    insertionRow.set(3, Value());
+    return programa.insert().values(insertionRow).execute().getAffectedItemsCount() == 1;
 }
 
 bool DataBaseMysql::deletePrograma(const Programa& p){
     Table programa = this->db->getTable("PROGRAMA", true);
-    int affectedRows = programa.remove().where("nombre='"+p.getNombre()+"'").execute().getAffectedItemsCount();
-    return affectedRows == 1;
+    return programa.remove().where("nombre='"+p.getNombre()+"'").execute().getAffectedItemsCount() == 1;
 }
 
 DataBaseMysql::~DataBaseMysql(){

@@ -113,6 +113,15 @@ namespace lvc
             }
         });
 
+        this->cmEngine.insertCommand("insert", [this](const std::string& params){
+            std::stringstream ss{params};
+            std::string name, dir;
+            ss >> name >> dir;
+            (this->db->insertPrograma(Programa{name, dir}));
+            std::cout<<'\t'<<name<<" correctly inserted into DataBase\n\n";
+            
+        });
+
         this->cmEngine.insertCommand("exit", [this](const std::string& params){
             clear("");
             safeExit();

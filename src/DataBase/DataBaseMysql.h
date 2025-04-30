@@ -28,9 +28,9 @@ namespace lvc
 
             void selectProgramas(List<Programa>*) override;
 
-            void insertPrograma(const Programa&) override;
+            bool insertPrograma(const Programa&) override;
 
-            void updatePrograma(const Programa&) override;
+            bool updatePrograma(const Programa&) override;
 
             bool deletePrograma(const Programa&) override;
 

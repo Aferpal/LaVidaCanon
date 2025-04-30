@@ -17,9 +17,9 @@ namespace lvc{
 
             virtual void selectProgramas(List<Programa>*) = 0;
 
-            virtual void insertPrograma(const Programa&) = 0;
+            virtual bool insertPrograma(const Programa&) = 0;
 
-            virtual void updatePrograma(const Programa&) = 0;
+            virtual bool updatePrograma(const Programa&) = 0;
 
             virtual bool deletePrograma(const Programa&) = 0;
 

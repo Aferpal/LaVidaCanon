@@ -18,9 +18,9 @@ namespace lvc
 
             void selectProgramas(List<Programa>*);
 
-            void insertPrograma(const Programa&);
+            bool insertPrograma(const Programa&);
 
-            void updatePrograma(const Programa&);
+            bool updatePrograma(const Programa&);
 
             bool deletePrograma(const Programa&);
 
@@ -69,11 +69,11 @@ namespace lvc
         }
     }
 
-    void DataBaseTXT::insertPrograma(const Programa& p){
+    bool DataBaseTXT::insertPrograma(const Programa& p){
         List<Programa>* list = new ArrayList<Programa>;
         this->selectProgramas(list);
         if( list->contains(p)){
-            return;
+            return false;
         }
         list->append(p);
         std::ofstream w{this->root+"/programas.txt"};
@@ -84,9 +84,10 @@ namespace lvc
         }
         delete list;
         w.close();
+        return true;
     };
 
-    void DataBaseTXT::updatePrograma(const Programa& p){
+    bool DataBaseTXT::updatePrograma(const Programa& p){
         List<Programa>* list = new ArrayList<Programa>;
         this->selectProgramas(list);
         list->remove(p);
@@ -99,6 +100,7 @@ namespace lvc
         }
         delete list;
         w.close();
+        return true;
     };
 
     bool DataBaseTXT::deletePrograma(const Programa& p){
